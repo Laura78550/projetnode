@@ -5,12 +5,14 @@ const port = 3000;
 //const apiUrl = "https://api.lyrics.ovh/v1/";
 var request = require('request');
 const songsRoutes = require('./handlers/songs.js');
-const { axios } = require('./schemas/helpers/fetch.js');
+const authRoutes = require('./handlers/auth.js');
+const { axios } = require('./helpers/fetch.js');
 
 // Import libs
 app.use(bodyParser.json());
 
 app.use('/songs', songsRoutes);
+app.use('/auth', authRoutes);
 
 app.get('/',async(req,res)=>{
 

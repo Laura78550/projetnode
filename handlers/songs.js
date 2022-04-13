@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const SongsValidation = require("../middlewares/validators");
+const { SongsValidation } = require("../middlewares/validators");
+const auth = require("../middlewares/auth");
 
 router.get(
   '/',
+  auth,
   SongsValidation.responseSongs,
   async function getSongs(req,res){
     res.json({message : "All songs" });
