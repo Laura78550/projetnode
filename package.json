@@ -1,0 +1,35 @@
+{
+  "name": "projetnodejs-music",
+  "version": "1.0.1",
+  "description": "project node js - music api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:Laura78550/projetnodejs-music.git"
+  },
+  "author": "Laura Pineau, Melissa Benmeziane, Takwa Belghith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laura78550/projetnodejs-music/issues"
+  },
+  "homepage": "https://github.com/Laura78550/projetnodejs-music#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "express-joi-validation": "^5.0.1",
+    "http-errors": "^2.0.0",
+    "joi": "^17.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.15",
+    "sequelize": "^6.13.0",
+    "sqlite3": "^5.0.2",
+    "statuses": "^2.0.1",
+    "uuid": "^8.3.2",
+    "axios": "0.24.0"
+  }
+}
