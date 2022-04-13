@@ -17,8 +17,8 @@ module.exports = async (req, res, next) => {
           });
 
           req.auth = {
-            fistname: user.firstname,
-            lastname: user.lastname,
+            firstName: user.firstName,
+            lastName: user.lastName,
             email: user.email,
             id: user.id,
             role: user.Role.name,

@@ -3,10 +3,10 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 //const apiUrl = "https://api.lyrics.ovh/v1/";
-var request = require('request');
 const songsRoutes = require('./handlers/songs.js');
 const authRoutes = require('./handlers/auth.js');
 const { axios } = require('./helpers/fetch.js');
+const createError = require('http-errors');
 
 // Import libs
 app.use(bodyParser.json());
@@ -18,14 +18,18 @@ app.get('/',async(req,res)=>{
 
   const {response, error} = await axios({
     method: "GET",
-    url: 'https://api.lyrics.ovh/v1/Coldplay/Adventure of a Lifetime'
+    url: 'https://api.lyrics.ovh/v1/Coldplay/Adventufgbgre of a Lifetime'
   });
 
   // Handle error case
+  if(response) {
+    const searchRegExp = /\n/g;
+    const lyrics = response.data.lyrics.replace(searchRegExp, '<br />');
+    res.send(lyrics)
+  }else{
+    res.status(404).json(createError.NotFound())
+  }
 
-  const searchRegExp = /\n/g;
-  const lyrics = response.data.lyrics.replace(searchRegExp, '<br />');
-  res.send(lyrics)
 });
 
 
