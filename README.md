@@ -1,16 +1,32 @@
 # Projetnodejs-music
 
-# Dependencies
-- nodeJs 12.13.0 et +
-- npm ou yarn ou pnpm
+# Description :
+NodeJs project that allows you to view, modify, add and delete music lyrics.
+
+# Team
+- Laura Pineau : laura.pineau@mail-ecv.fr
 
 # API documentation
 An API is available to get the lyrics of a song. The documentation is available on Apiary.io: http://docs.lyricsovh.apiary.io/.
 
-# Team
-- Laura Pineau : laura.pineau@mail-ecv.fr
-- Melissa Benmeziane : melissa.benmeziane@mail-ecv.fr
-- Takwa Belghith : takwa.belghith@mail-ecv.fr
+# Prerequisites:
+- nodeJs 12.13.0 and more
+- npm or yarn vs pnpm
+
+# Project Dependencies
+- express
+- express-joi-validation
+- joi
+- http-errors
+- jsonwebtoken
+- nodemon
+- axios
+- body-parser
+- sequelize
+- sqlite3
+- statuses
+- uuid
+- bcrypt
 
 # Installation
 - Step 1
@@ -19,3 +35,7 @@ An API is available to get the lyrics of a song. The documentation is available 
   Install Packages : npm i
 - Step 3
   Start Project : npm start
+  
+# MiddleWares
+- Authentification :
+- Validation :
