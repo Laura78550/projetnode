@@ -4,47 +4,26 @@ const app = express();
 const port = 3000;
 //const apiUrl = "https://api.lyrics.ovh/v1/";
 var request = require('request');
-//const songsRoutes = require('./handlers/songs.js');
-
-//app.use('/songs', songsRoutes);
+const songsRoutes = require('./handlers/songs.js');
+const { axios } = require('./schemas/helpers/fetch.js');
 
 // Import libs
 app.use(bodyParser.json());
 
-
-// const fecthData = url => {
-//     return new Promise( (resolve, reject) => {
-//       axios.get(apiUrl + url)
-//       .then( response => {
-//         //console.log(response);
-//           return response.status == 200
-//           ? response
-//           : reject('Fetch error first then', response);
-//       })
-//       .then( data => {
-//           return resolve(JSON.stringify(data.data));
-//       })
-//       .catch( fetchError => {
-//           return reject(fetchError);
-//       });
-//     });
-// };
+app.use('/songs', songsRoutes);
 
 app.get('/',async(req,res)=>{
 
-request('https://api.lyrics.ovh/v1/Coldplay/Adventure of a Lifetime', function (error, response, body) {
-  // console.log('Status:', response.statusCode);
-  // console.log('Headers:', JSON.stringify(response.headers));
-  // console.log('Response:', body);
-  res.json(body);
-});
-  // try {
-  //       await fecthData("Coldplay/Adventure of a Lifetime")
-  //       .then( data => res.json(data))
-  //       .catch( err => res.json(err))
-  // }catch(e){
-  //   res.json(e);
-  // }
+  const {response, error} = await axios({
+    method: "GET",
+    url: 'https://api.lyrics.ovh/v1/Coldplay/Adventure of a Lifetime'
+  });
+
+  // Handle error case
+
+  const searchRegExp = /\n/g;
+  const lyrics = response.data.lyrics.replace(searchRegExp, '<br />');
+  res.send(lyrics)
 });
 
 
