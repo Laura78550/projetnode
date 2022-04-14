@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 //const apiUrl = "https://api.lyrics.ovh/v1/";
-const songsRoutes = require('./handlers/songs.js');
+const lyricsRoutes = require('./handlers/lyrics.js');
 const authRoutes = require('./handlers/auth.js');
 const { axios } = require('./helpers/fetch.js');
 const createError = require('http-errors');
@@ -11,7 +11,7 @@ const createError = require('http-errors');
 // Import libs
 app.use(bodyParser.json());
 
-app.use('/songs', songsRoutes);
+app.use('/lyrics', lyricsRoutes);
 app.use('/login', authRoutes);
 
 app.get('/',async(req,res)=>{

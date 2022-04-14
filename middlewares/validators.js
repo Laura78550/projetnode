@@ -25,6 +25,6 @@ module.exports.AuthValidation = {
     })),
 
     responseAuth: validator.response(Joi.object({
-        access_token: Joi.string().required().description("Response access_token")
+        message: Joi.string().required().description("Response access_token")
     })),
 }
