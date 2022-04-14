@@ -3,7 +3,7 @@ const validator = require('express-joi-validation').createValidator({})
 
 module.exports.SongsValidation = {
     // Get with id params
-    getSongsWithId: validator.params(Joi.object({
+    getSongWithId: validator.params(Joi.object({
         id: Joi.string().min(2).guid().required().description('Id of the lyrics')
     })),
 
@@ -13,10 +13,21 @@ module.exports.SongsValidation = {
         //id: Joi.string().min(2).regex(new RegExp("^[:0-9]*$")).required().description('Id of the song')
     })),
 
-    // Response
+    // Response String
     responseSongs: validator.response(Joi.object({
         message: Joi.string().required().description("Response message")
     })),
+
+    // Response Object
+    responseSongsOne: validator.response(Joi.object({
+        message: Joi.object().required().description("Response lyric")
+    })),
+
+    // Response Array Object
+    responseSongsAll: validator.response(Joi.object({
+        message: Joi.array().required().description("Response lyric")
+    })),
+    
 }
 
 module.exports.AuthValidation = {

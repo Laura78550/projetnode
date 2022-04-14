@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const { User, Role } = require('../models');
 
-module.exports = async (req, res, next) => {
+module.exports.auth = async (req, res, next) => {
     if(req.headers.authorization) {
       const token = req.headers.authorization;
       try {
@@ -45,4 +45,16 @@ module.exports = async (req, res, next) => {
                 message: 'Wrong Authorization',
               });
       }
+}
+
+module.exports.authValidUser = async (req, res, next) => {
+  if (req.auth.role == "user"){
+    next();
+  }else{
+    return res
+    .status(401)
+    .json({
+      message: 'User Unauthorized',
+    });
+  }
 }
