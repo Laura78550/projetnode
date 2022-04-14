@@ -31,7 +31,7 @@ router.post(
           }          
         }else{
           return res
-          .status(403)
+          .status(404)
           .json({
             message: 'User Not Found',
           });

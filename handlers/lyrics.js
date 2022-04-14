@@ -3,8 +3,7 @@ const router = express.Router();
 const { SongsValidation } = require("../middlewares/validators");
 const auth = require("../middlewares/auth");
 const { axios } = require('../helpers/fetch.js');
-const { v4: uuidv4 } = require('uuid');
-const { Lyrics } = require('../models');
+const { Lyric } = require('../models');
 
 router.get(
   '/',
@@ -21,11 +20,11 @@ router.get(
 
   // Handle error case
   if(response) {
-    // const searchRegExp = /\n/g;
-    // const lyrics = response.data.lyrics.replace(searchRegExp, '');
     res.send(response.data.lyrics)
   }else{
-    res.status(404).json(createError.NotFound())
+    res
+    .status(404)
+    .json(createError.NotFound())
   }
 
   },
@@ -43,25 +42,53 @@ router.get(
 
 router.post(
   '/',
+  auth,
   SongsValidation.responseSongs,
   async function createSong(req,res){
-    res.json({message : "Create song" });
-
-    const user = await Lyrics.create({
-      songName : req.params.songName,
-      songAuthor : req.params.songName,
-      songLyrics : req.params.songName,
-      songName : req.params.songName,
+    const{songname,songauthor,songlyrics} = req.headers;
+    const UserId = req.auth.id;
+    const lyrics = await Lyric.create({
+      songName:songname,
+      songAuthor:songauthor,
+      songLyrics:songlyrics,
+      UserId,
     });
+
+    if(lyrics){
+      res
+      .status(201)
+      .json({message : "Lyric created successfull" });
+    }else{
+      return res
+      .status(400)
+      .json({
+        message: 'Lyric not created',
+      });
+    }
   }
 );
 
 router.delete(
   '/:id',
+  auth,
   SongsValidation.deleteSongsWithId,
   SongsValidation.responseSongs,
   async function deleteSong(req,res){
-    res.json({message : `Delete song id ${req.params.id}` });
+    const lyrics = await Lyric.destroy({
+      where: { id: req.params.id },
+    })
+
+    if(lyrics){
+      res
+      .status(200)
+      .json({message : "Lyric deleted successfull" });
+    }else{
+      return res
+      .status(404)
+      .json({
+        message: 'Lyric Not Found',
+      });
+    }
   }
 );
 
