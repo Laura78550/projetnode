@@ -1,14 +1,16 @@
 const { AuthValidation } = require("../middlewares/validators");
+const jwt = require('jsonwebtoken');
 const express = require('express');
 const router = express.Router();
+const { User, Role } = require('../models');
 
 
-router.get(
-    '/login',
+router.post(
+    '/',
     AuthValidation.login,
     AuthValidation.responseAuth,
     async function getSongs(req,res){
-        const { email, password } = req.body;
+        const { email, password } = req.headers;
 
         const foundUser = await User.findOne({
           where: { email: email },
@@ -21,7 +23,7 @@ router.get(
           const { email, id, role } = foundUser;
       
           // on génère le jwt avec les informations importantes
-          const token = generateAccessToken(email, foundUser.Role.name, id);
+          const token = generateAccessToken(email, role, id);
           return res.json({ access_token: token });
         }
       

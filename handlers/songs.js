@@ -3,6 +3,8 @@ const router = express.Router();
 const { SongsValidation } = require("../middlewares/validators");
 const auth = require("../middlewares/auth");
 const { axios } = require('../helpers/fetch.js');
+const { v4: uuidv4 } = require('uuid');
+const { Lyrics } = require('../models');
 
 router.get(
   '/',
@@ -44,6 +46,13 @@ router.post(
   SongsValidation.responseSongs,
   async function createSong(req,res){
     res.json({message : "Create song" });
+
+    const user = await Lyrics.create({
+      songName : req.params.songName,
+      songAuthor : req.params.songName,
+      songLyrics : req.params.songName,
+      songName : req.params.songName,
+    });
   }
 );
 

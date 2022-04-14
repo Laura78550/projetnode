@@ -12,7 +12,7 @@ const createError = require('http-errors');
 app.use(bodyParser.json());
 
 app.use('/songs', songsRoutes);
-app.use('/auth', authRoutes);
+app.use('/login', authRoutes);
 
 app.get('/',async(req,res)=>{
 
@@ -31,8 +31,6 @@ app.get('/',async(req,res)=>{
   }
 
 });
-
-
 
 // Run app
 app.listen(port,()=>{
