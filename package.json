@@ -1,11 +1,11 @@
 {
   "name": "projetnodejs-music",
-  "version": "1.4.2",
+  "version": "1.8.0",
   "description": "project node js - music api",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "npx sequelize-cli db:migrate & npx sequelize-cli db:seed:all & node index.js"
   },
   "repository": {
     "type": "git",

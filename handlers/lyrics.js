@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { SongsValidation } = require("../middlewares/validators");
+const { LyricsValidation } = require("../middlewares/validators");
 const { auth , authValidUser}= require("../middlewares/auth");
 const { axios } = require('../helpers/fetch.js');
 const { Lyric } = require('../models');
@@ -9,13 +9,13 @@ router.get(
   '/',
   auth,
   authValidUser,
-  SongsValidation.responseSongsAll,
+  LyricsValidation.responseLyricsAll,
   async function getSongs(req,res){
     const idUser = req.auth.id;
     const foundUserLyrics = await Lyric.findAll({
       where: { userId: idUser },
     });
-    if(foundUserLyrics){      
+    if(foundUserLyrics){
       res
       .status(200)
       .json({message:foundUserLyrics})
@@ -30,7 +30,7 @@ router.get(
 router.get(
   '/:author/:title',
   auth,
-  SongsValidation.responseSongs,
+  LyricsValidation.responseLyrics,
   async function getSong(req,res){
       const author = req.params.author;
       const title = req.params.title;
@@ -38,7 +38,7 @@ router.get(
         method: "GET",
         url: 'https://api.lyrics.ovh/v1/'+author+'/'+ title
       });
-    
+
       if(response) {
         res
         .status(200)
@@ -55,8 +55,8 @@ router.get(
   '/:id',
   auth,
   authValidUser,
-  SongsValidation.getSongWithId,
-  SongsValidation.responseSongsOne,
+  LyricsValidation.getLyricWithId,
+  //LyricsValidation.responseSongsOne, Ne fonctionne pas Retour = Object Json Je ne trouve pas avec Joi Validate
   async function getSongByUser(req,res){
     const lyrics = await Lyric.findByPk(req.params.id);
     if(lyrics) {
@@ -74,7 +74,7 @@ router.get(
 router.post(
   '/',
   auth,
-  SongsValidation.responseSongs,
+  LyricsValidation.responseLyrics,
   async function createSong(req,res){
     const{songname,songauthor,songlyrics} = req.headers;
     const UserId = req.auth.id;
@@ -102,8 +102,8 @@ router.post(
 router.delete(
   '/:id',
   auth,
-  SongsValidation.deleteSongsWithId,
-  SongsValidation.responseSongs,
+  LyricsValidation.deleteLyricsWithId,
+  LyricsValidation.responseLyrics,
   async function deleteSong(req,res){
     const lyrics = await Lyric.destroy({
       where: { id: req.params.id },
@@ -127,7 +127,7 @@ router.put(
   '/:id',
   auth,
   authValidUser,
-  SongsValidation.responseSongs,
+  LyricsValidation.responseLyrics,
   async function modifySong(req,res){
     const{songname,songauthor,songlyrics} = req.headers;
     const lyricId = req.params.id;

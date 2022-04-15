@@ -1,33 +1,38 @@
 const Joi  = require("joi");
 const validator = require('express-joi-validation').createValidator({})
 
-module.exports.SongsValidation = {
+module.exports.LyricsValidation = {
     // Get with id params
-    getSongWithId: validator.params(Joi.object({
+    getLyricWithId: validator.params(Joi.object({
         id: Joi.string().min(2).guid().required().description('Id of the lyrics')
     })),
 
     // Delete with id params
-    deleteSongsWithId: validator.params(Joi.object({
+    deleteLyricsWithId: validator.params(Joi.object({
         id:Joi.string().guid().required().description('Id of the lyrics')
         //id: Joi.string().min(2).regex(new RegExp("^[:0-9]*$")).required().description('Id of the song')
     })),
 
     // Response String
-    responseSongs: validator.response(Joi.object({
+    responseLyrics: validator.response(Joi.object({
         message: Joi.string().required().description("Response message")
     })),
 
     // Response Object
-    responseSongsOne: validator.response(Joi.object({
+    responseLyricsOne: validator.response(Joi.object({
+        //message: Joi.object({
+        //    songName:Joi.string().required().description("Response songName"),
+        //    songAuthor:Joi.string().required().description("Response songAuthor"),
+        //    songLyrics:Joi.string().required().description("Response songLyrics"),
+        //}).required().description("Response lyric")
         message: Joi.object().required().description("Response lyric")
     })),
 
     // Response Array Object
-    responseSongsAll: validator.response(Joi.object({
+    responseLyricsAll: validator.response(Joi.object({
         message: Joi.array().required().description("Response lyric")
     })),
-    
+
 }
 
 module.exports.AuthValidation = {

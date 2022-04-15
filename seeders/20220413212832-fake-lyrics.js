@@ -29,6 +29,33 @@ module.exports = {
         songLyrics: 'lyrics of my music',
         userId: user.id,
       },
+      {
+        id: uuidv4(),
+        updatedAt: new Date(),
+        createdAt: new Date(),
+        songName: 'SecondSongName',
+        songAuthor: 'Somebody',
+        songLyrics: 'lyrics of my music',
+        userId: user.id,
+      },
+      {
+        id: uuidv4(),
+        updatedAt: new Date(),
+        createdAt: new Date(),
+        songName: 'ThirdSongName',
+        songAuthor: 'Anyone',
+        songLyrics: 'lyrics of my music',
+        userId: user.id,
+      },
+      {
+        id: uuidv4(),
+        updatedAt: new Date(),
+        createdAt: new Date(),
+        songName: 'FourthSongName',
+        songAuthor: 'Unknow',
+        songLyrics: 'lyrics of my music',
+        userId: user.id,
+      },
     ]);
   },
 

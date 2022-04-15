@@ -2,6 +2,7 @@
 
 # Description :
 NodeJs project that allows you to view, modify, add and delete music lyrics.
+The Api is used by the guest and user role and the ORM is only used by the user role.
 
 # Team
 - Laura Pineau : laura.pineau@mail-ecv.fr
@@ -17,25 +18,42 @@ An API is available to get the lyrics of a song. The documentation is available 
 - express
 - express-joi-validation
 - joi
-- http-errors
 - jsonwebtoken
-- nodemon
 - axios
 - body-parser
 - sequelize
 - sqlite3
-- statuses
 - uuid
 - bcrypt
 
-# Installation
+# Installation & launch of the project
 - Step 1
   Clone Project : git clone git@github.com:Laura78550/projetnodejs-music.git
 - Step 2
   Install Packages : npm i
 - Step 3
   Start Project : npm start
-  
+
+# PostMan Use
+- Step 1
+  Get the PostMan collection file in the project clone
+- Step 2
+  Add Collection to PostMan Application
+- Step 3
+  Go to login route (Login) and launch the route
+- Step 4
+  Retrieve the token (Copy to clipboard)
+- Step 5
+  For each request, go to the "Authorization" tab and paste the token in the "Access Token" field
+- Step 6
+  Enjoy Api
+
+# View Database
+- Website for look data in database : https://inloop.github.io/sqlite-viewer/
+  Drag and drop file database.sqlite
+
 # MiddleWares
 - Authentification :
+This middleware is used to verify that the person accessing the route is authenticated and what is his role.
 - Validation :
+This middleware is user to verify the input and output data of each query.

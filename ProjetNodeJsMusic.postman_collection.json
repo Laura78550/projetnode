@@ -1,0 +1,492 @@
+{
+	"info": {
+		"_postman_id": "9d2b80f4-158a-4842-b778-51c6931e24c3",
+		"name": "ProjetNodeJsMusic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HomePage",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "laura@user.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "useruser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"laura@user.com\",\r\n    \"password\":\"useruser\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "coucou",
+							"value": "coucou",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "email",
+						"value": "laura@user.com",
+						"type": "text"
+					},
+					{
+						"key": "password",
+						"value": "useruser",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"laura@user.com\",\r\n    \"password\":\"useruser\"\r\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "coucou",
+							"value": "coucou",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddLyric",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "songName",
+						"value": "TitreDeMaChanson",
+						"type": "text"
+					},
+					{
+						"key": "songAuthor",
+						"value": "AuteurDeMaChanson",
+						"type": "text"
+					},
+					{
+						"key": "songLyrics",
+						"value": "Les paroles de ma chanson",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhdXJhQHVzZXIuY29tIiwiaWQiOiJkMjcyNDA4NS1kYTkwLTRkYjktOTEwMC1kOWIyMDA5OTVmZTIiLCJpYXQiOjE2NDk5NTU2MzUsImV4cCI6MTY0OTk1NzQzNX0.0gJy3Q8NlQPll8G0xn6jPxCMz06FFaO_RJNA1ORu7iw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "laura@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "useruser",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/lyrics",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteLyric",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "laura@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "useruser",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/lyrics/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "33fcf2d3-447e-4d32-9768-ca5b23126860"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLyricByAPI",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/lyrics/:author/:title",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics",
+						":author",
+						":title"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Coldplay",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Adventure of a Lifetime",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "author",
+							"value": "Coldplay"
+						},
+						{
+							"key": "title",
+							"value": "Adventure of a Lifetime"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLyricByUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/lyrics/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics",
+						":id"
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Coldplay",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Adventure of a Lifetime",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "ded3463d-c968-4aa6-ad34-b10434463c48"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetLyricsByUser",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "tokenType",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessToken",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/lyrics/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics",
+						""
+					],
+					"query": [
+						{
+							"key": "author",
+							"value": "Coldplay",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Adventure of a Lifetime",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutLyric",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						},
+						{
+							"key": "headerPrefix",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "songName",
+						"value": "TitreDeMaChanson",
+						"type": "text"
+					},
+					{
+						"key": "songAuthor",
+						"value": "AuteurDeMaChanson",
+						"type": "text"
+					},
+					{
+						"key": "songLyrics",
+						"value": "Les paroles de ma chanson",
+						"type": "text"
+					},
+					{
+						"key": "authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxhdXJhQHVzZXIuY29tIiwiaWQiOiJkMjcyNDA4NS1kYTkwLTRkYjktOTEwMC1kOWIyMDA5OTVmZTIiLCJpYXQiOjE2NDk5NTU2MzUsImV4cCI6MTY0OTk1NzQzNX0.0gJy3Q8NlQPll8G0xn6jPxCMz06FFaO_RJNA1ORu7iw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "laura@user.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "useruser",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:3000/lyrics/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"lyrics",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "eb61348f-8402-48c5-8edd-b20391360e26"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
